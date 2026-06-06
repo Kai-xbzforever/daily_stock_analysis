@@ -140,6 +140,7 @@ jobs:
           # 自选股配置
           # ==========================================
           STOCK_LIST: ${{ vars.STOCK_LIST || secrets.STOCK_LIST || '600519' }}
+          TRADING_DAY_CHECK_ENABLED: 'false'
           MARKET_REVIEW_REGION: ${{ vars.MARKET_REVIEW_REGION || secrets.MARKET_REVIEW_REGION || 'cn' }}
           
           # ==========================================
@@ -203,7 +204,7 @@ jobs:
           elif [ "$MODE" = "stocks-only" ]; then
             python main.py --no-market-review
           else
-            python main.py--force-run
+            python main.py
           fi
       
       - name: 上传分析报告
